@@ -11,6 +11,7 @@ class Example(QWidget):
         self.setGeometry(300, 300, 300, 220)
         self.setWindowTitle('Исследования')
         
+        self.show()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
