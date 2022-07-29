@@ -1,9 +1,10 @@
 import sys
 from PyQt5.QtWidgets import (QApplication, QWidget, QMainWindow, QAction, qApp, QHBoxLayout, QVBoxLayout, QPushButton)
 from PyQt5.QtGui import QIcon
-from view_prog import view_menuBar
 
-class Example(view_menuBar, QMainWindow, QWidget):
+
+
+class Example(QMainWindow, QWidget):
     
     def __init__(self):
         super().__init__()
@@ -18,10 +19,9 @@ class Example(view_menuBar, QMainWindow, QWidget):
         menubar = self.menuBar()
         
         fileMenu = menubar.addMenu('&File')
-        fileMenu.addAction(exitAction)
-        
+        fileMenu.addAction(exitAction)    
 
-    def initUI(self):    
+    def initUI(self):
         self.statusBar().showMessage('Ready')
         self.setGeometry(300, 300, 300, 220)
         self.setWindowTitle('Исследования')
