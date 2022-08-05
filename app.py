@@ -1,6 +1,7 @@
 import sys
 from PyQt5.QtWidgets import (QApplication, QWidget, QMainWindow, QAction, qApp, QHBoxLayout, QVBoxLayout, QPushButton)
 from PyQt5.QtGui import QIcon
+from numpy import save
 
 
 
@@ -20,10 +21,11 @@ class Example(QMainWindow, QWidget):
         self.show()
 
     def exitaction(self):
-        new_file = QAction(QIcon('img\icons8-создать-новый-48.png'), '&Новый документ', self)
-        new_file.setShortcut('Ctrl+N')
-        new_file.setStatusTip('Создание нового документа')
-        new_file.trigger
+        save_file = QAction(QIcon('img\icons8-создать-новый-48.png'), '&Новый документ', self)
+        save_file.setShortcut('Ctrl+N')
+        save_file.setStatusTip('Создание нового документа')
+        save_file.trigger
+        menubar = self.menuBar()
 
         exitAction = QAction(QIcon('img\icons8-выход-48.png'), '&Выход', self)
         exitAction.setShortcut('Ctrl+Q')
@@ -32,7 +34,7 @@ class Example(QMainWindow, QWidget):
         menubar = self.menuBar()
         
         fileMenu = menubar.addMenu('&File')
-        fileMenu.addAction(new_file)
+        fileMenu.addAction(save_file)
         fileMenu.addAction(exitAction)
 
     def status_Bar(self):
