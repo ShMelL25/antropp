@@ -111,16 +111,19 @@ class Ui_MainWindow(object):
         saveasAction.setStatusTip('Save File as')
         saveasAction.triggered.connect(qApp.quit)
 
-        # Создание кнопки export
-        exportAction = QAction(QIcon('img\icons8-экспорт-48.png'), '&Export', MainWindow)
-        exportAction.setShortcut('Alt+F')
-        exportAction.setStatusTip('Export file')
-        exportAction.triggered.connect(qApp.quit)
+        # Создание кнопки export to pdf
+        exportPDFAction = QAction(QIcon('img\icons8-pdf-48.png'), '&Export to PDF', MainWindow)
+        exportPDFAction.setStatusTip('Export file to PDF')
+        exportPDFAction.triggered.connect(qApp.quit)
+
+        # Создание кнопки export to CSV
+        exportCSVAction = QAction(QIcon('img\icons8-экспорт-в-csv-48.png'), '&Export to CSV', MainWindow)
+        exportCSVAction.setStatusTip('Export file to CSV')
+        exportCSVAction.triggered.connect(qApp.quit)
 
         # Создание кнопки import
-        importAction = QAction(QIcon('img\icons8-импортировать-48.png'), '&Import', MainWindow)
-        importAction.setShortcut('Alt+F')
-        importAction.setStatusTip('Import file')
+        importAction = QAction(QIcon('img\icons8-импортировать-48.png'), '&Import CSV', MainWindow)
+        importAction.setStatusTip('Import file CSV')
         importAction.triggered.connect(qApp.quit)
         
         # Создание кнопки выход
@@ -137,14 +140,55 @@ class Ui_MainWindow(object):
         self.menubar.setObjectName("menubar")
               
         # Отображение всех элементов в MenuBar
+        #File
         fileMenu = self.menubar.addMenu('&File')
         fileMenu.addAction(newpersonAction)
         fileMenu.addAction(saveAction)
         fileMenu.addAction(saveasAction)
-        fileMenu.addAction(exportAction)
+        exportFile = fileMenu.addMenu('&Export') # Export File Menu
+        exportFile.setIcon(QIcon('img\icons8-экспорт-48.png'))
+        exportFile.addAction(exportPDFAction)
+        exportFile.addAction(exportCSVAction)
         fileMenu.addAction(importAction)
         fileMenu.addAction(exitAction)
         MainWindow.setMenuBar(self.menubar)
+
+        # Создание кнопки settings
+        SettingsAction = QAction(QIcon('img\icons8-настройки-48.png'), '&Settings', MainWindow)
+        SettingsAction.setShortcut('Alt+P')
+        SettingsAction.setStatusTip('Settings App')
+        SettingsAction.triggered.connect(qApp.quit)
+        
+        # Settings
+        settingsMenu = self.menubar.addMenu('&Settings')
+        settingsMenu.addAction(SettingsAction)
+        MainWindow.setMenuBar(self.menubar)  
+
+        # Вывод графиков
+        statisticAction = QAction(QIcon('img\icons8-статистика-48.png'), 'Statistic', MainWindow)
+        statisticAction.setStatusTip('Output of Statistic') 
+        statisticAction.triggered.connect(qApp.quit)       
+
+        # Tools
+        toolsMenu = self.menubar.addMenu('&Tools')
+        toolsMenu.addAction(statisticAction)
+        MainWindow.setMenuBar(self.menubar)
+
+        # Application help
+        application_helpAction = QAction(QIcon('img\icons8-обслуживание-48.png'), 'Application help', MainWindow)
+        application_helpAction.setStatusTip('Application help')
+        application_helpAction.triggered.connect(qApp.quit)
+
+        # Sample information
+        sampleinfoAction = QAction(QIcon('img\icons8-задать-вопрос-48.png'), 'Sample information', MainWindow)
+        sampleinfoAction.setStatusTip('Sample information')
+        sampleinfoAction.triggered.connect(qApp.quit)
+
+        # Help
+        helpMenu = self.menubar.addMenu('&Help')
+        helpMenu.addAction(application_helpAction)
+        helpMenu.addAction(sampleinfoAction)
+        MainWindow.setMenuBar(self.menubar)      
 
         # Создание Статус бара
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
