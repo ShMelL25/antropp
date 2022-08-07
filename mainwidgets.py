@@ -17,6 +17,7 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setWindowModality(QtCore.Qt.NonModal)
         MainWindow.resize(799, 515)
+        MainWindow.setWindowIcon(QIcon('img\icons8-анализ-навыков-48.png'))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -92,22 +93,60 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.scrollArea_Research)
         MainWindow.setCentralWidget(self.centralwidget)
         
+        # Создание кнопки добавить испытуемого
+        newpersonAction = QAction(QIcon('img\icons8-создать-новый-48.png'), '&New person', MainWindow)
+        newpersonAction.setShortcut('Ctrl+N')
+        newpersonAction.setStatusTip('New Person')
+        newpersonAction.triggered.connect(qApp.quit)
+
+        # Создание кнопки сохранить
+        saveAction = QAction(QIcon('img\icons8-сохранить-48.png'), '&Save', MainWindow)
+        saveAction.setShortcut('Ctrl+S')
+        saveAction.setStatusTip('Save File')
+        saveAction.triggered.connect(qApp.quit)
+
+        # Создание кнопки сохранить как
+        saveasAction = QAction(QIcon('img\icons8-сохранить-как-48.png'), '&Save as', MainWindow)
+        saveasAction.setShortcut('Alt+1')
+        saveasAction.setStatusTip('Save File as')
+        saveasAction.triggered.connect(qApp.quit)
+
+        # Создание кнопки export
+        exportAction = QAction(QIcon('img\icons8-экспорт-48.png'), '&Export', MainWindow)
+        exportAction.setShortcut('Alt+F')
+        exportAction.setStatusTip('Export file')
+        exportAction.triggered.connect(qApp.quit)
+
+        # Создание кнопки import
+        importAction = QAction(QIcon('img\icons8-импортировать-48.png'), '&Import', MainWindow)
+        importAction.setShortcut('Alt+F')
+        importAction.setStatusTip('Import file')
+        importAction.triggered.connect(qApp.quit)
+        
+        # Создание кнопки выход
         exitAction = QAction(QIcon('img\icons8-выход-48.png'), '&Exit', MainWindow)
         exitAction.setShortcut('Ctrl+Q')
         exitAction.setStatusTip('Exit Application')
         exitAction.triggered.connect(qApp.quit)
 
+        # Создание MenuBar
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 799, 26))
         self.menubar.setContextMenuPolicy(QtCore.Qt.ActionsContextMenu)
         self.menubar.setDefaultUp(False)
         self.menubar.setObjectName("menubar")
-        
-                
+              
+        # Отображение всех элементов в MenuBar
         fileMenu = self.menubar.addMenu('&File')
+        fileMenu.addAction(newpersonAction)
+        fileMenu.addAction(saveAction)
+        fileMenu.addAction(saveasAction)
+        fileMenu.addAction(exportAction)
+        fileMenu.addAction(importAction)
         fileMenu.addAction(exitAction)
         MainWindow.setMenuBar(self.menubar)
 
+        # Создание Статус бара
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
