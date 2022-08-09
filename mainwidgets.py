@@ -98,6 +98,7 @@ class Ui_MainWindow(Sorrymywindow, object):
         self.pushButton.setFont(font)
         self.pushButton.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.pushButton.setObjectName("pushButton")
+        self.pushButton.clicked.connect(Sorrymywindow.showdialog)
         self.verticalLayout_2.addWidget(self.pushButton)
         self.scrollArea_Research.setWidget(self.scrollAreaWidgetContents_2)
         self.horizontalLayout_2.addWidget(self.scrollArea_Research)

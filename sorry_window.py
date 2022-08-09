@@ -23,6 +23,10 @@ class Sorrymywindow():
         msg.setIcon(QMessageBox.Information)
 
         msg.setText("Information")
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI Semilight")
+        font.setPointSize(10)
+        msg.setFont(font)
         msg.setInformativeText("We're sorry, but this feature is not yet available.")
         msg.setWindowTitle("Sorry")
         msg.setStandardButtons(QMessageBox.Ok)
