@@ -9,15 +9,18 @@
 
 from tkinter import Label
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QAction, qApp
+from PyQt5.QtWidgets import QAction, qApp, QMessageBox
+from sorry_window import Sorrymywindow 
 from PyQt5.QtGui import QIcon
 
-class Ui_MainWindow(object):      
+class Ui_MainWindow(Sorrymywindow, object):     
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.setWindowModality(QtCore.Qt.NonModal)
-        MainWindow.resize(799, 515)
+        MainWindow.setWindowModality(QtCore.Qt.ApplicationModal)
+        MainWindow.resize(1000, 600)
+        MainWindow.showMaximized()
+        MainWindow.setMinimumSize(1000, 600)
         MainWindow.setWindowIcon(QIcon('img\icons8-анализ-навыков-48.png'))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -99,39 +102,39 @@ class Ui_MainWindow(object):
         self.scrollArea_Research.setWidget(self.scrollAreaWidgetContents_2)
         self.horizontalLayout_2.addWidget(self.scrollArea_Research)
         MainWindow.setCentralWidget(self.centralwidget)
-        
+      
         # Создание кнопки добавить испытуемого
         newpersonAction = QAction(QIcon('img\icons8-создать-новый-48.png'), '&New person', MainWindow)
         newpersonAction.setShortcut('Ctrl+N')
         newpersonAction.setStatusTip('New Person')
-        newpersonAction.triggered.connect(qApp.quit)
+        newpersonAction.triggered.connect(Sorrymywindow.showdialog)
 
         # Создание кнопки сохранить
         saveAction = QAction(QIcon('img\icons8-сохранить-48.png'), '&Save', MainWindow)
         saveAction.setShortcut('Ctrl+S')
         saveAction.setStatusTip('Save File')
-        saveAction.triggered.connect(qApp.quit)
+        saveAction.triggered.connect(Sorrymywindow.showdialog)
 
         # Создание кнопки сохранить как
         saveasAction = QAction(QIcon('img\icons8-сохранить-как-48.png'), '&Save as', MainWindow)
         saveasAction.setShortcut('Alt+1')
         saveasAction.setStatusTip('Save File as')
-        saveasAction.triggered.connect(qApp.quit)
+        saveasAction.triggered.connect(Sorrymywindow.showdialog)
 
         # Создание кнопки export to pdf
         exportPDFAction = QAction(QIcon('img\icons8-pdf-48.png'), '&Export to PDF', MainWindow)
         exportPDFAction.setStatusTip('Export file to PDF')
-        exportPDFAction.triggered.connect(qApp.quit)
+        exportPDFAction.triggered.connect(Sorrymywindow.showdialog)
 
         # Создание кнопки export to CSV
         exportCSVAction = QAction(QIcon('img\icons8-экспорт-в-csv-48.png'), '&Export to CSV', MainWindow)
         exportCSVAction.setStatusTip('Export file to CSV')
-        exportCSVAction.triggered.connect(qApp.quit)
+        exportCSVAction.triggered.connect(Sorrymywindow.showdialog)
 
         # Создание кнопки import
         importAction = QAction(QIcon('img\icons8-импортировать-48.png'), '&Import CSV', MainWindow)
         importAction.setStatusTip('Import file CSV')
-        importAction.triggered.connect(qApp.quit)
+        importAction.triggered.connect(Sorrymywindow.showdialog)
         
         # Создание кнопки выход
         exitAction = QAction(QIcon('img\icons8-выход-48.png'), '&Exit', MainWindow)
@@ -164,7 +167,7 @@ class Ui_MainWindow(object):
         SettingsAction = QAction(QIcon('img\icons8-настройки-48.png'), '&Settings', MainWindow)
         SettingsAction.setShortcut('Alt+P')
         SettingsAction.setStatusTip('Settings App')
-        SettingsAction.triggered.connect(qApp.quit)
+        SettingsAction.triggered.connect(Sorrymywindow.showdialog)
         
         # Settings
         settingsMenu = self.menubar.addMenu('&Settings')
@@ -174,7 +177,7 @@ class Ui_MainWindow(object):
         # Вывод графиков
         statisticAction = QAction(QIcon('img\icons8-статистика-48.png'), 'Statistic', MainWindow)
         statisticAction.setStatusTip('Output of Statistic') 
-        statisticAction.triggered.connect(qApp.quit)       
+        statisticAction.triggered.connect(Sorrymywindow.showdialog)       
 
         # Tools
         toolsMenu = self.menubar.addMenu('&Tools')
@@ -184,12 +187,12 @@ class Ui_MainWindow(object):
         # Application help
         application_helpAction = QAction(QIcon('img\icons8-обслуживание-48.png'), 'Application help', MainWindow)
         application_helpAction.setStatusTip('Application help')
-        application_helpAction.triggered.connect(qApp.quit)
+        application_helpAction.triggered.connect(Sorrymywindow.showdialog)
 
         # Sample information
         sampleinfoAction = QAction(QIcon('img\icons8-задать-вопрос-48.png'), 'Sample information', MainWindow)
         sampleinfoAction.setStatusTip('Sample information')
-        sampleinfoAction.triggered.connect(qApp.quit)
+        sampleinfoAction.triggered.connect(Sorrymywindow.showdialog)
 
         # Help
         helpMenu = self.menubar.addMenu('&Help')
@@ -202,10 +205,12 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
+        
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-   
+    
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Исследования"))
