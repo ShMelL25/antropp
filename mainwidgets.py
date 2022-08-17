@@ -54,13 +54,26 @@ class Ui_MainWindow(Sorrymywindow, object):
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
         self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 218, 440))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
-        self.verticalLayout.setObjectName("verticalLayout")
+        self.gridLayout = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
+        self.gridLayout.setObjectName("gridLayout")
+        self.gridLayout.setSpacing(1)
         self.scrollArea_Name.setWidget(self.scrollAreaWidgetContents)
         self.horizontalLayout_2.addWidget(self.scrollArea_Name)
 
         # Добавление надписи Испытуемые
+        self.isp_label = QtWidgets.QLabel(self.scrollArea_Name)
+        self.isp_label.setText('Испытуемые')
+        self.gridLayout.addWidget(self.isp_label, 0, 1)
+
+        self.isp_label_1 = QtWidgets.QLabel(self.scrollArea_Name)
+        self.isp_label_1.setText('1234')
+        self.gridLayout.addWidget(self.isp_label_1, 1, 1)
+
+        self.isp_label_2 = QtWidgets.QLabel(self.scrollArea_Name)
+        self.isp_label_2.setText('12345')
+        self.gridLayout.addWidget(self.isp_label_2, 1, 2)
         
+       
 
         self.scrollArea_Research = QtWidgets.QScrollArea(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
