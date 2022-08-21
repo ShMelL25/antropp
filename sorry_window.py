@@ -33,6 +33,3 @@ class Sorrymywindow():
         msg.buttonClicked.connect(close)
         
         retval = msg.exec_()
-       
-
-
