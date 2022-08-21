@@ -55,14 +55,31 @@ class Ui_MainWindow(Sorrymywindow, object):
         self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 218, 440))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
+        self.verticalLayout.setAlignment(QtCore.Qt.AlignTop)
         self.verticalLayout.setObjectName("QVBoxLayout")
-        self.verticalLayout.setSpacing(10)
+        self.verticalLayout.setSpacing(1)
         self.scrollArea_Name.setWidget(self.scrollAreaWidgetContents)
         self.horizontalLayout_2.addWidget(self.scrollArea_Name)
 
         # Добавление надписи Испытуемые
         self.isp_label = QtWidgets.QLabel(self.scrollArea_Name)
         self.isp_label.setText('Испытуемые')
+        font_isp = QtGui.QFont()
+        font_isp.setFamily("Segoe UI Semilight")
+        font_isp.setPointSize(12)
+        font_isp.setBold(True)
+        self.isp_label.setFont(font_isp)
+        self.isp_label.setObjectName("isp_label")
+        self.verticalLayout.addWidget(self.isp_label)
+        #self.isp_label.setStyleSheet("QLabel {background-color: red;}")
+        self.isp_label.setAlignment(QtCore.Qt.AlignTop|QtCore.Qt.AlignHCenter)
+
+        # Создание кнопок Испытуемых
+        self.btn_isp_1 = QtWidgets.QPushButton(self.scrollArea_Name)
+        self.btn_isp_1.setText(f'1) Егор')
+        self.btn_isp_1.setObjectName("btn_isp_1") 
+        self.verticalLayout.addWidget(self.btn_isp_1)
+        
         
         
         
