@@ -10,7 +10,7 @@
 from tkinter import Label
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QAction, qApp, QMessageBox
-from sorry_window import Sorrymywindow 
+from sorry_window import Sorrymywindow, Button_isp
 from PyQt5.QtGui import QIcon
 
 class Ui_MainWindow(Sorrymywindow, object):     
@@ -75,10 +75,7 @@ class Ui_MainWindow(Sorrymywindow, object):
         self.isp_label.setAlignment(QtCore.Qt.AlignTop|QtCore.Qt.AlignHCenter)
 
         # Создание кнопок Испытуемых
-        self.btn_isp_1 = QtWidgets.QPushButton(self.scrollArea_Name)
-        self.btn_isp_1.setText(f'1) Егор')
-        self.btn_isp_1.setObjectName("btn_isp_1") 
-        self.verticalLayout.addWidget(self.btn_isp_1)
+        Button_isp.isp_buttom(self)
         
         
         
