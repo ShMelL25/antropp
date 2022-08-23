@@ -10,7 +10,7 @@
 from tkinter import Label
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QAction, qApp, QMessageBox
-from sorry_window import Sorrymywindow, Button_isp
+from sorry_window import Sorrymywindow, Button_isp, Dialog_New_Person
 from PyQt5.QtGui import QIcon
 
 class Ui_MainWindow(Sorrymywindow, object):     
@@ -141,7 +141,7 @@ class Ui_MainWindow(Sorrymywindow, object):
         newpersonAction = QAction(QIcon('img\icons8-создать-новый-48.png'), '&New person', MainWindow)
         newpersonAction.setShortcut('Ctrl+N')
         newpersonAction.setStatusTip('New Person')
-        newpersonAction.triggered.connect(Sorrymywindow.showdialog)
+        newpersonAction.triggered.connect(Dialog_New_Person.dia_new_pers)
 
         # Создание кнопки сохранить
         saveAction = QAction(QIcon('img\icons8-сохранить-48.png'), '&Save', MainWindow)

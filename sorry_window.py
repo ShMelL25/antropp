@@ -11,29 +11,81 @@
 
 from fileinput import close
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import qApp, QAction, QMessageBox, QInputDialog, QPushButton, QLineEdit
+from PyQt5.QtWidgets import qApp, QAction, QMessageBox, QInputDialog, QPushButton, QLineEdit, QDialog
 from PyQt5.QtGui import QIcon
 
 
 class Sorrymywindow():
     
    def showdialog():
-        msg = QMessageBox()
-        msg.setWindowIcon(QIcon('img\icons8-грустно-48.png'))
-        msg.setIcon(QMessageBox.Information)
+      msg = QMessageBox()
+      msg.setWindowIcon(QIcon('img\icons8-грустно-48.png'))
+      msg.setIcon(QMessageBox.Information)
 
-        msg.setText("Information")
-        font = QtGui.QFont()
-        font.setFamily("Segoe UI Semilight")
-        font.setPointSize(10)
-        msg.setFont(font)
-        msg.setInformativeText("We're sorry, but this feature is not yet available.")
-        msg.setWindowTitle("Sorry")
-        msg.setStandardButtons(QMessageBox.Ok)
-        msg.buttonClicked.connect(close)
+      msg.setText("Information")
+      font = QtGui.QFont()
+      font.setFamily("Segoe UI Semilight")
+      font.setPointSize(10)
+      msg.setFont(font)
+      msg.setInformativeText("We're sorry, but this feature is not yet available.")
+      msg.setWindowTitle("Sorry")
+      msg.setStandardButtons(QMessageBox.Ok)
+      msg.buttonClicked.connect(close)
         
-        retval = msg.exec_()
+      retval = msg.exec_()
 
+class Dialog_New_Person():
+
+   def dia_new_pers():
+      
+      dia = QDialog()
+      dia.setWindowIcon(QIcon('img\icons8-создать-новый-48.png'))
+      dia.setWindowTitle("New Person")
+      dia.setMinimumSize(600, 400)
+      dia.gridLayout_1 = QtWidgets.QGridLayout(dia)
+      dia.gridLayout_1.setAlignment(QtCore.Qt.AlignTop)
+      dia.gridLayout_1.setObjectName("QVBoxLayout")
+      dia.gridLayout_1.setSpacing(1)
+      
+      # Создание Строки First Name
+      dia.first_name = QtWidgets.QLabel(dia)
+      dia.first_name.setText("First Name")
+      dia.first_name.setObjectName("first_name")
+      dia.gridLayout_1.addWidget(dia.first_name, 0, 0)
+
+      dia.first_name_line = QtWidgets.QLineEdit(dia)
+      dia.first_name_line.setObjectName("first_name_line")
+      dia.gridLayout_1.addWidget(dia.first_name_line, 0, 1)
+      
+      # Создание Строки Last Name
+      dia.last_name = QtWidgets.QLabel(dia)
+      dia.last_name.setText("Last Name")
+      dia.last_name.setObjectName("last_name")
+      dia.gridLayout_1.addWidget(dia.last_name, 1, 0)
+
+      dia.last_name_line = QtWidgets.QLineEdit(dia)
+      dia.last_name_line.setObjectName("last_name_line")
+      dia.gridLayout_1.addWidget(dia.last_name_line, 1, 1)
+
+      dia.bithday = QtWidgets.QLabel(dia)
+      dia.bithday.setObjectName("bithday")
+      dia.bithday.setText("Bithday")
+      dia.gridLayout_1.addWidget(dia.bithday, 2, 0)
+
+      dia.bithday_line = QtWidgets.QDateEdit(dia)
+      dia.gridLayout_1.addWidget(dia.bithday_line, 2, 1)
+
+      dia.btn_save = QtWidgets.QPushButton(dia)
+      dia.btn_save.setText("Save")
+      dia.btn_save.setObjectName("btn_save")
+      dia.gridLayout_1.addWidget(dia.btn_save)
+      sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Fixed)
+      sizePolicy.setHorizontalStretch(0)
+      sizePolicy.setVerticalStretch(0)
+      sizePolicy.setHeightForWidth(dia.btn_save.sizePolicy().hasHeightForWidth())
+      dia.btn_save.setSizePolicy(sizePolicy)
+      
+      dia.exec_()
 
 # Создание кнопок испытуемых
 class Button_isp():
