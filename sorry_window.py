@@ -11,7 +11,7 @@
 
 from fileinput import close
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import qApp, QAction, QMessageBox
+from PyQt5.QtWidgets import qApp, QAction, QMessageBox, QInputDialog, QPushButton, QLineEdit
 from PyQt5.QtGui import QIcon
 
 
@@ -33,6 +33,7 @@ class Sorrymywindow():
         msg.buttonClicked.connect(close)
         
         retval = msg.exec_()
+
 
 # Создание кнопок испытуемых
 class Button_isp():

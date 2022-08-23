@@ -88,13 +88,23 @@ class Ui_MainWindow(Sorrymywindow, object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.scrollArea_Research.sizePolicy().hasHeightForWidth())
         self.scrollArea_Research.setSizePolicy(sizePolicy)
-        self.scrollArea_Research.setWidgetResizable(False)
+        self.scrollArea_Research.setWidgetResizable(True)
         self.scrollArea_Research.setObjectName("scrollArea_Research")
         self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
         self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 548, 440))
         self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
+
+        # Создание надписи тесты
+        self.data_label= QtWidgets.QLabel(self.scrollArea_Research)
+        self.data_label.setText('Испытуемые')
+        self.data_label.setFont(font_isp)
+        self.data_label.setObjectName("isp_label")
+        self.verticalLayout_2.addWidget(self.data_label)
+        #self.isp_label.setStyleSheet("QLabel {background-color: red;}")
+        self.data_label.setAlignment(QtCore.Qt.AlignTop|QtCore.Qt.AlignHCenter)
+        
         self.frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -106,6 +116,9 @@ class Ui_MainWindow(Sorrymywindow, object):
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
         self.verticalLayout_2.addWidget(self.frame)
+
+
+        
         self.pushButton = QtWidgets.QPushButton(self.scrollAreaWidgetContents_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
