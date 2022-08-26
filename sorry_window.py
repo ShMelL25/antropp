@@ -40,8 +40,13 @@ class Sorrymywindow():
 
 class Dialog_New_Person():
 
+   def __init__(self):
+      super(Dialog_New_Person, self).__init__()
+      self.ui = Dialog_New_Person()
+      self.ui.dia_new_pers(self)
+        
      
-   def dia_new_pers():
+   def dia_new_pers(self):
       
       dia = QDialog()
       dia.setWindowIcon(QIcon('img\icons8-создать-новый-48.png'))
@@ -61,13 +66,10 @@ class Dialog_New_Person():
       dia.first_name_line = QtWidgets.QLineEdit(dia)
       dia.first_name_line.setObjectName("first_name_line")
       dia.gridLayout_1.addWidget(dia.first_name_line, 0, 1)
+      global first_name_pers
       first_name_pers = dia.first_name_line.text()
       
-      def clik():
-         
-         d = first_name_pers
-        
-         print(d)
+      
          
       
       
@@ -121,7 +123,7 @@ class Dialog_New_Person():
       sizePolicy.setVerticalStretch(0)
       sizePolicy.setHeightForWidth(dia.btn_save.sizePolicy().hasHeightForWidth())
       dia.btn_save.setSizePolicy(sizePolicy)  
-      dia.btn_save.clicked.connect(clik)
+      dia.btn_save.clicked.connect(self.clik)
           
 
       
@@ -141,11 +143,11 @@ class Dialog_New_Person():
       dia.exec_() 
 
 
-   def clik(dia):
+   def clik(self):
          
-         dia.d = dia.first_name_pers
+      d = first_name_pers
         
-         print(dia.d)
+      print(d)
            
 
      
