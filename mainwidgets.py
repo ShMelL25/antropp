@@ -63,7 +63,7 @@ class Ui_MainWindow(Sorrymywindow, object):
 
         # Добавление надписи Испытуемые
         self.isp_label = QtWidgets.QLabel(self.scrollArea_Name)
-        self.isp_label.setText('Испытуемые')
+        self.isp_label.setText('Subjects')
         font_isp = QtGui.QFont()
         font_isp.setFamily("Segoe UI Semilight")
         font_isp.setPointSize(12)
@@ -98,7 +98,7 @@ class Ui_MainWindow(Sorrymywindow, object):
 
         # Создание надписи тесты
         self.data_label= QtWidgets.QLabel(self.scrollArea_Research)
-        self.data_label.setText('Испытуемые')
+        self.data_label.setText('Tests')
         self.data_label.setFont(font_isp)
         self.data_label.setObjectName("isp_label")
         self.verticalLayout_2.addWidget(self.data_label)
@@ -126,7 +126,6 @@ class Ui_MainWindow(Sorrymywindow, object):
         sizePolicy.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
         self.pushButton.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
-        font.setBold(True)
         font.setWeight(75)
         self.pushButton.setFont(font)
         self.pushButton.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -248,7 +247,7 @@ class Ui_MainWindow(Sorrymywindow, object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Исследования"))
-        self.pushButton.setText(_translate("MainWindow", "Добавить тест"))
+        self.pushButton.setText(_translate("MainWindow", "Add a test"))
 
 
 

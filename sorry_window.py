@@ -10,9 +10,12 @@
 
 
 from fileinput import close
+from typing_extensions import Self
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import qApp, QAction, QMessageBox, QInputDialog, QPushButton, QLineEdit, QDialog
 from PyQt5.QtGui import QIcon
+
+
 
 
 class Sorrymywindow():
@@ -21,6 +24,7 @@ class Sorrymywindow():
       msg = QMessageBox()
       msg.setWindowIcon(QIcon('img\icons8-грустно-48.png'))
       msg.setIcon(QMessageBox.Information)
+      msg.setMinimumSize(600, 250)
 
       msg.setText("Information")
       font = QtGui.QFont()
@@ -36,12 +40,13 @@ class Sorrymywindow():
 
 class Dialog_New_Person():
 
-   def dia_new_pers():
+     
+   def dia_new_pers(dia):
       
       dia = QDialog()
       dia.setWindowIcon(QIcon('img\icons8-создать-новый-48.png'))
       dia.setWindowTitle("New Person")
-      dia.setMinimumSize(600, 400)
+      dia.setMinimumSize(400, 180)
       dia.gridLayout_1 = QtWidgets.QGridLayout(dia)
       dia.gridLayout_1.setAlignment(QtCore.Qt.AlignTop)
       dia.gridLayout_1.setObjectName("QVBoxLayout")
@@ -56,6 +61,13 @@ class Dialog_New_Person():
       dia.first_name_line = QtWidgets.QLineEdit(dia)
       dia.first_name_line.setObjectName("first_name_line")
       dia.gridLayout_1.addWidget(dia.first_name_line, 0, 1)
+      dia.first_name_pers = dia.first_name_line.text()
+      
+      
+         
+      
+      
+      
       
       # Создание Строки Last Name
       dia.last_name = QtWidgets.QLabel(dia)
@@ -67,14 +79,35 @@ class Dialog_New_Person():
       dia.last_name_line.setObjectName("last_name_line")
       dia.gridLayout_1.addWidget(dia.last_name_line, 1, 1)
 
+      # Создание строки Bithday
       dia.bithday = QtWidgets.QLabel(dia)
       dia.bithday.setObjectName("bithday")
-      dia.bithday.setText("Bithday")
+      dia.bithday.setText("Age")
       dia.gridLayout_1.addWidget(dia.bithday, 2, 0)
 
-      dia.bithday_line = QtWidgets.QDateEdit(dia)
+      dia.bithday_line = QtWidgets.QLineEdit(dia)
       dia.gridLayout_1.addWidget(dia.bithday_line, 2, 1)
+      
 
+      # Создание radion Button
+      dia.sex_label = QtWidgets.QLabel(dia)
+      dia.sex_label.setText("Sex")
+      dia.sex_label.setObjectName("sex_label")
+      dia.gridLayout_1.addWidget(dia.sex_label, 3, 0)
+
+      # M
+      dia.rad_btn_male = QtWidgets.QRadioButton(dia)
+      dia.rad_btn_male.setObjectName("rad_btn_male")
+      dia.rad_btn_male.setText("Male")
+      dia.gridLayout_1.addWidget(dia.rad_btn_male, 3, 1)
+
+      # F
+      dia.rad_btn_female = QtWidgets.QRadioButton(dia)
+      dia.rad_btn_female.setObjectName("rad_btn_female")
+      dia.rad_btn_female.setText("Female")
+      dia.gridLayout_1.addWidget(dia.rad_btn_female, 4, 1)
+
+      # Создание кнопки Save
       dia.btn_save = QtWidgets.QPushButton(dia)
       dia.btn_save.setText("Save")
       dia.btn_save.setObjectName("btn_save")
@@ -83,9 +116,37 @@ class Dialog_New_Person():
       sizePolicy.setHorizontalStretch(0)
       sizePolicy.setVerticalStretch(0)
       sizePolicy.setHeightForWidth(dia.btn_save.sizePolicy().hasHeightForWidth())
-      dia.btn_save.setSizePolicy(sizePolicy)
+      dia.btn_save.setSizePolicy(sizePolicy)  
+      dia.btn_save.clicked.connect(dia.clik)
+          
+
       
-      dia.exec_()
+
+
+      # создание кнопки Cancel
+      #dia.btn_cancel = QtWidgets.QPushButton(dia)
+      #dia.btn_cancel.setText("Cancel")
+      #dia.btn_cancel.setObjectName("btn_cancel")
+      #dia.gridLayout_1.addWidget(dia.btn_cancel)
+      #sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Fixed)
+      #sizePolicy.setHorizontalStretch(0)
+      #sizePolicy.setVerticalStretch(0)
+      #sizePolicy.setHeightForWidth(dia.btn_cancel.sizePolicy().hasHeightForWidth())
+      #dia.btn_cancel.setSizePolicy(sizePolicy)
+
+      dia.exec_() 
+
+
+   def clik(dia):
+         
+         dia.d = dia.first_name_pers
+        
+         print(dia.d)
+           
+
+     
+
+
 
 # Создание кнопок испытуемых
 class Button_isp():
@@ -95,7 +156,7 @@ class Button_isp():
 
    def isp_buttom(self):
       self.btn_isp_1 = QtWidgets.QPushButton(self.scrollArea_Name)
-      self.btn_isp_1.setText(f'1) Егор')
+      self.btn_isp_1.setText(f'1. Егор')
       self.btn_isp_1.setObjectName("btn_isp_1") 
       self.verticalLayout.addWidget(self.btn_isp_1)
 
